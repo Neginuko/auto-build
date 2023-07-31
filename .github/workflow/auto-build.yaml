@@ -1,0 +1,13 @@
+name: auto-build
+run-name: ${{ github.actor }} running...
+on:
+  pull_request:
+    branches:
+      - develop
+jobs:
+  check-build:
+    runs-on: [self-hosted]
+    steps:
+      - uses: actions/checkout@v3
+      - run: cargo check
+      - run: wasm-pack build --target web
