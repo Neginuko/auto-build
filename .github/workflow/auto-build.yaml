@@ -9,5 +9,7 @@ jobs:
     runs-on: [self-hosted]
     steps:
       - uses: actions/checkout@v3
-      - run: cargo check
-      - run: wasm-pack build --target web
+      - name: Cargo check
+        run: cargo check --verbose
+      - name: Build wasm-pack
+        run: wasm-pack build --target web --verbose
